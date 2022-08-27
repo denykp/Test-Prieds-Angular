@@ -1,1 +1,65 @@
 /* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/pink-bluegrey.css";
+
+body {
+  margin: 0px;
+  padding: 0px;
+}
+.w-full {
+  width: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.page-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 40px;
+  padding-top: 50px;
+  margin-bottom: 50px;
+  color: white;
+}
+
+.page-container {
+  background: black;
+  height: 100vh;
+  color: white;
+}
+
+.spotlight-wrapper {
+  opacity: 0.5;
+  transition: opacity 0.4s ease-in;
+}
+
+.spotlight-wrapper > .spotlight {
+  background: linear-gradient(45deg, #00dc82 0%, #36e4da 50%, #0047e1 100%);
+  filter: blur(20vh);
+  height: 50vh;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: -50%;
+}

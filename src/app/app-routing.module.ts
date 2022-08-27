@@ -7,14 +7,14 @@ import { RequestQueueNumberComponent } from './request-queue-number/request-queu
 import { VisitorListComponent } from './visitor-list/visitor-list.component';
 
 const routes: Routes = [
-  {path: '', component: MenuComponent},
-  {path: 'request-queue-number', component: RequestQueueNumberComponent},
-  {path: 'input_visitor_details', component: InputVisitorDetailsComponent},
-  {path: 'visitor-list', component: VisitorListComponent},
+  { path: '', component: MenuComponent },
+  { path: 'request-queue-number', component: RequestQueueNumberComponent },
+  { path: 'input-visitor-details', component: InputVisitorDetailsComponent },
+  { path: 'visitor-list', component: VisitorListComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

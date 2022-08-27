@@ -1,1 +1,86 @@
-<p>visitor-list works!</p>
+<div class="page-container">
+  <div>
+    <div class="page-title">Visitor List</div>
+  </div>
+  <div class="content" style="display: flex">
+    <div class="search-box">
+      <div class="title">Search Visitor</div>
+      <mat-form-field class="w-full" appearance="fill">
+        <mat-label>Visitor Name</mat-label>
+        <input matInput placeholder="ex: 1" [(ngModel)]="searchName" />
+      </mat-form-field>
+      <mat-form-field class="w-full" appearance="fill">
+        <mat-label>City</mat-label>
+        <input matInput placeholder="ex: 1" [(ngModel)]="searchCity" />
+      </mat-form-field>
+
+      <div class="flex justify-end">
+        <button mat-raised-button color="primary" (click)="loadVisitor()">
+          Search
+        </button>
+      </div>
+    </div>
+    <div style="width: 100%">
+      <table
+        mat-table
+        [dataSource]="listVisitor"
+        class="mat-elevation-z8 w-full"
+      >
+        <ng-container matColumnDef="queueNumber">
+          <th mat-header-cell *matHeaderCellDef>Queue Number</th>
+          <td mat-cell *matCellDef="let element">{{ element.queueNumber }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="timeArrival">
+          <th mat-header-cell *matHeaderCellDef>Arrival Time</th>
+          <td mat-cell *matCellDef="let element">
+            {{
+              moment(element.timeArrival, "YYYY/MM/DD HH:mm:ss").format(
+                "DD MMM YYYY HH:mm:ss"
+              )
+            }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="idNumber">
+          <th mat-header-cell *matHeaderCellDef>Visitor ID</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.idNumber }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="phone">
+          <th mat-header-cell *matHeaderCellDef>Phone</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.phone }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef>Address</th>
+          <td mat-cell *matCellDef="let element">{{ element.address }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="city">
+          <th mat-header-cell *matHeaderCellDef>City</th>
+          <td mat-cell *matCellDef="let element">{{ element.city }}</td>
+        </ng-container>
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns"
+          class="table-header"
+        ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="spotlight-wrapper">
+  <div class="spotlight"></div>
+</div>

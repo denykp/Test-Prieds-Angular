@@ -1,1 +1,81 @@
-<p>input-visitor-details works!</p>
+<div class="page-container">
+  <div class="page-title">Edit Visitor Details</div>
+  <div class="content">
+    <div class="flex justify-center">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Queue Number</mat-label>
+        <input
+          type="text"
+          placeholder="Select Queue Number"
+          aria-label="Queue Number"
+          matInput
+          [formControl]="queueCtrl"
+          [matAutocomplete]="auto"
+          [(ngModel)]="formField.queueNumber"
+          (blur)="loadVisitor($event)"
+        />
+        <mat-autocomplete
+          #auto="matAutocomplete"
+          (optionSelected)="loadVisitor($event)"
+        >
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <div *ngIf="formField.queueNumber">
+      <div fxLayout="row" fxLayoutGap="20px">
+        <div class="w-full">
+          <mat-form-field class="w-full" appearance="fill">
+            <mat-label>Visitor Name</mat-label>
+            <input
+              matInput
+              placeholder="ex: John Doe"
+              [(ngModel)]="formField.name"
+            />
+          </mat-form-field>
+          <mat-form-field class="w-full" appearance="fill">
+            <mat-label>ID Number</mat-label>
+            <input
+              matInput
+              placeholder="ex: 1110001110001"
+              [(ngModel)]="formField.idNumber"
+              (keypress)="numbersOnly($event)"
+            />
+          </mat-form-field>
+          <mat-form-field class="w-full" appearance="fill">
+            <mat-label>Phone Number</mat-label>
+            <input
+              matInput
+              placeholder="ex: 081231231231"
+              [(ngModel)]="formField.phone"
+              (keypress)="numbersOnly($event)"
+            />
+          </mat-form-field>
+        </div>
+        <div class="w-full">
+          <mat-form-field class="w-full" appearance="fill">
+            <mat-label>Address</mat-label>
+            <textarea matInput [(ngModel)]="formField.address"></textarea>
+          </mat-form-field>
+          <mat-form-field class="w-full" appearance="fill">
+            <mat-label>City</mat-label>
+            <input matInput [(ngModel)]="formField.city" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="flex justify-end">
+        <button mat-raised-button color="primary" (click)="saveVisitor()">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="spotlight-wrapper">
+  <div class="spotlight"></div>
+</div>

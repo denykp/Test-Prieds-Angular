@@ -1,1 +1,67 @@
-<p>request-queue-number works!</p>
+<div class="page-container">
+  <div class="page-title">New Visitor Queue</div>
+  <div class="flex justify-center">
+    <div class="box-container flex items-center">
+      <button mat-raised-button color="primary" (click)="generateQueue()">
+        New Visitor
+      </button>
+    </div>
+    <div class="box-container flex items-center">
+      <mat-form-field
+        class="example-full-width"
+        appearance="standard"
+        style="margin-right: 10px"
+      >
+        <mat-label>Queue Number</mat-label>
+        <input
+          type="text"
+          placeholder="Select Queue Number"
+          aria-label="Queue Number"
+          matInput
+          [formControl]="queueCtrl"
+          [matAutocomplete]="auto"
+          [(ngModel)]="reprintNumber"
+        />
+        <mat-autocomplete
+          #auto="matAutocomplete"
+          (optionSelected)="formField.queueNumber = ''"
+        >
+          <mat-option
+            *ngFor="let option of filteredOptions | async"
+            [value]="option"
+          >
+            {{ option }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <div>
+        <button mat-raised-button color="primary" (click)="reprintQueue()">
+          Reprint Visitor Queue
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="barcode-container" *ngIf="formField.queueNumber">
+    <div class="barcode-content">
+      <div class="title">ALMEGATECH</div>
+      <hr />
+      <div>Nomor Antiran Anda :</div>
+      <div class="queue-number">{{ formField.queueNumber }}</div>
+      <div>Mohon Menunggu</div>
+      <ngx-barcode
+        [bc-value]="formField.queueNumber"
+        bc-width="5"
+        bc-height="50"
+      ></ngx-barcode>
+      <div>{{ formField.timeArrival }}</div>
+      <hr />
+      <div class="footer">
+        <div>Budayakan antri untuk kenyamanan bersama</div>
+        <div>Terimakasih atas kunjungan anda</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="spotlight-wrapper">
+  <div class="spotlight"></div>
+</div>

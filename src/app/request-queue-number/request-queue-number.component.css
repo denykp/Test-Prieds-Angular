@@ -1,0 +1,44 @@
+.box-container {
+  margin: 0 10px;
+  padding: 20px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+
+.barcode-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.barcode-content {
+  background: white;
+  color: black;
+  width: 500px;
+  text-align: center;
+  font-size: 20px;
+  padding: 50px;
+}
+
+.barcode-content hr {
+  border-color: black;
+  border-width: 2px;
+  margin: 5px 0;
+}
+
+.barcode-content .title {
+  font-size: 22px;
+  font-weight: bolder;
+}
+
+.barcode-content .queue-number {
+  font-size: 100px;
+  font-weight: bolder;
+}
+
+.barcode-content .footer {
+  text-align: center;
+  font-weight: bold;
+  width: 350px;
+  margin: 0 auto;
+}
